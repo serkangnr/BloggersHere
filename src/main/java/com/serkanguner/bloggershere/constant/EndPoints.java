@@ -22,4 +22,9 @@ public class EndPoints {
     public static final String DELETE = "/delete";
     public static final String FINDALL = "/findall";
     public static final String FINDBYID = "/findbyid";
+    public static final String FINDBYUSERID = "/findbyuserid";
+    public static final String FINDBYPOSTID = "/findbypostid";
+    public static final String FINDBYCATEGORYID = "/findbycategoryid";
+
+    public static final String FINDBYNAMEANDLASTNAME = "/findbynameandlastname";
 }
