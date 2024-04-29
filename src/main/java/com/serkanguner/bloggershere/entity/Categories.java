@@ -25,5 +25,4 @@ public class Categories {
 
     @OneToMany(mappedBy = "categories",cascade = CascadeType.ALL)
     List<Post>posts;
-
 }
