@@ -11,4 +11,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
     // Isim soyisim ile kullanici arama
     User findByNameIgnoreCaseAndLastnameIgnoreCase(String name, String lastname);
+
 }

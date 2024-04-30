@@ -37,19 +37,49 @@ public class UserController {
     @GetMapping(FINDALL)
     @CrossOrigin("*")
     public ResponseEntity<List<UserFindAllResponseDto>> findAllDto(){
-        return ResponseEntity.ok(userService.findUserDto());
+        ResponseEntity<List<UserFindAllResponseDto>> listResponseEntity = ResponseEntity.ok(userService.findUserDto());
+        if(listResponseEntity==null){
+            throw new BloggerHereException(ErrorType.USER_NOT_FOUND,"User not found");
+        }
+        return listResponseEntity;
+
     }
     @GetMapping(FINDBYID)
     @CrossOrigin("*")
     public ResponseEntity<UserFindAllResponseDto> findByIdDto(@RequestParam Long id){
-        return ResponseEntity.ok(userService.findUserDtoID(id));
+        ResponseEntity<UserFindAllResponseDto> dtoResponseEntity = ResponseEntity.ok(userService.findUserDtoID(id));
+
+        return dtoResponseEntity;
     }
 
     @GetMapping(FINDBYNAMEANDLASTNAME)
     @CrossOrigin("*")
     public ResponseEntity<UserFindAllResponseDto> findUserByNameAndLastName(@RequestParam String name, @RequestParam String lastname){
-        return ResponseEntity.ok(userService.findUserDto(name, lastname));
+        ResponseEntity<UserFindAllResponseDto> dtoResponseEntity = ResponseEntity.ok(userService.findUserDto(name, lastname));
+        if (dtoResponseEntity.getBody()==null) {
+            throw new BloggerHereException(ErrorType.USER_NOT_FOUND, "User not found");
+        }
+        return dtoResponseEntity;
     }
+
+    @PutMapping(UPDATE)
+    @CrossOrigin("*")
+    public ResponseEntity<String>updateUser(Long id,String name,String lastName,String email,String password){
+        ResponseEntity<String> responseEntity = ResponseEntity.ok(userService.updateUser(id, name, lastName, email, password));
+
+        return responseEntity;
+    }
+
+    @DeleteMapping(DELETE)
+    @CrossOrigin("*")
+    public ResponseEntity<String> deleteUser(Long id){
+        ResponseEntity<String> responseEntity = ResponseEntity.ok(userService.deleteUser(id));
+        if (responseEntity.getBody()==null) {
+            throw new BloggerHereException(ErrorType.USER_NOT_FOUND, "User not found");
+        }
+        return responseEntity;
+    }
+
 
 
 

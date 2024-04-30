@@ -25,6 +25,10 @@ public class EndPoints {
     public static final String FINDBYUSERID = "/findbyuserid";
     public static final String FINDBYPOSTID = "/findbypostid";
     public static final String FINDBYCATEGORYID = "/findbycategoryid";
+    public static final String FINDALLBYCONTENTCONTAINING = "/findallbycontentcontaining";
+    public static final String FINDALLBYNAMECONTAINING = "/findallbynamecontaining";
+    public static final String FINDALLBYCATEGORYNAME = "/findallbynamecategoryname";
+    public static final String FINDALLPOSTORDERBYPUBLISHEDDATE = "/findallpostorderbypublisheddate";
 
     public static final String FINDBYNAMEANDLASTNAME = "/findbynameandlastname";
 }

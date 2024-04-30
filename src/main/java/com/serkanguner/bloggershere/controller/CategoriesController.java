@@ -40,5 +40,25 @@ public class CategoriesController {
         return ResponseEntity.ok(categoriesService.findCategoryById(id));
     }
 
+    @PutMapping(UPDATE)
+    @CrossOrigin("*")
+    public ResponseEntity<String> updateCategory(Long id, String name, String description) {
+        categoriesService.updateCategoryById(id, name, description);
+        return ResponseEntity.ok("Category updated successfully");
+    }
+
+    @DeleteMapping(DELETE)
+    @CrossOrigin("*")
+    public ResponseEntity<String> deleteCategory(Long id) {
+        categoriesService.deleteCategoryById(id);
+        return ResponseEntity.ok("Category deleted successfully");
+    }
+
+    @GetMapping(FINDALLBYNAMECONTAINING)
+    @CrossOrigin("*")
+    public ResponseEntity<List<CategoryFindAllResponseDto>> findAllCategoriesByNameContaining(@RequestParam String name){
+        return ResponseEntity.ok(categoriesService.findAllByNameContaining(name));
+    }
+
 
 }
