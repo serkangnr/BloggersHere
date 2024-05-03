@@ -1,6 +1,5 @@
 package com.serkanguner.bloggershere.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -17,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "tbl_user")
-@JsonSerialize
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

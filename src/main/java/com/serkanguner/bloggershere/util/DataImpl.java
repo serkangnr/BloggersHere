@@ -1,5 +1,8 @@
 package com.serkanguner.bloggershere.util;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.serkanguner.bloggershere.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -49,11 +52,42 @@ public class DataImpl implements ApplicationRunner {
 
 
 
+    public class JSONReader {
+        public static void main(String[] args) {
+            // JSON dosyasının yolunu belirtin
+            String dosyaYolu = "path/to/your/file.json";
+
+            try {
+                // Gson nesnesini oluşturun
+                Gson gson = new Gson();
+
+                // JsonParser nesnesini oluşturun
+                JsonParser parser = new JsonParser();
+
+                // FileReader kullanarak JSON dosyasını okuyun
+                JsonElement jsonElement = parser.parse(new FileReader(dosyaYolu));
+
+                // JSON verisini istediğiniz sınıfa dönüştürün (varsayılan olarak JsonObject kullanabilirsiniz)
+                // Örneğin, eğer JSON dosyasının içeriği bir User sınıfına uygunsa:
+                // User user = gson.fromJson(jsonElement, User.class);
+
+                // JSON verisini işlemek için gerekli işlemleri yapın
+                // Örneğin, JSON verisini yazdırın
+                System.out.println(jsonElement);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
 
 
     @Override
     public void run (ApplicationArguments args) throws Exception {
-         veriEkle();
+       //  veriEkle();
     }
 
 }
