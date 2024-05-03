@@ -14,6 +14,7 @@ public class EndPoints {
     public static final String USER="/user";
     public static final String CATEGORIES="/categories";
     public static final String POST="/post";
+    public static final String COMMENT="/comment";
 
 
     //methods:

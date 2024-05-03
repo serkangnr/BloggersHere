@@ -1,7 +1,6 @@
 package com.serkanguner.bloggershere.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,4 +32,10 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "categories_id")
     Categories categories;
+
+    @OneToMany(mappedBy ="post")
+    private List<Comment> comments;
+
+    @ManyToMany(mappedBy = "likes")
+    private List<User> users;
 }

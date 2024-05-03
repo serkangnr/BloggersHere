@@ -40,6 +40,12 @@ public class PostService extends ServiceManager<Post,Long> {
         return postFindAllResponseDtos;
     }
 
+    public List<Post> findAllById(List<Long> ids){
+        return ids.stream()
+                .map(id -> findById(id).orElseThrow(()-> new BloggerHereException(ErrorType.POST_NOT_FOUND) ))
+                .collect(Collectors.toList());
+    }
+
     public String savePost(PostSaveRequestDto postSaveRequestDto){
         User user = User.builder()
                 .id(postSaveRequestDto.user_id())

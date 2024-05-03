@@ -1,0 +1,60 @@
+{
+"user_id": 8,
+"categories_id": 6,
+"title": "5 Essential Workout Tips",
+"content": "Stay motivated and maximize your fitness journey with these essential workout tips. From proper form to effective routines, achieve your fitness goals with confidence!"
+},
+{
+  "user_id": 10,
+  "categories_id": 9,
+  "title": "Must-Have Gear for Hiking Adventures",
+  "content": "Embark on unforgettable hiking adventures equipped with the must-have gear listed here. From sturdy boots to reliable backpacks, gear up and explore the great outdoors!"
+},
+{
+"user_id": 12,
+"categories_id": 11,
+"title": "Family Game Night Fun",
+"content": "Gather the family for a night of fun and laughter with these classic games. From board games to card games, create lasting memories with your loved ones!"
+},
+{
+  "user_id": 14,
+  "categories_id": 4,
+  "title": "Latest Gadgets Unveiled",
+  "content": "Discover the latest innovations in electronic devices and gadgets. From smartphones to smart home technology, stay ahead of the curve with these cutting-edge gadgets!"
+},
+{
+"user_id": 9,
+"categories_id": 7,
+"title": "Wellness Tips for Busy Professionals",
+"content": "Maintain a healthy lifestyle despite a busy schedule with these practical wellness tips. From quick workouts to stress-relief techniques, prioritize your well-being!"
+},
+{
+  "user_id": 13,
+  "categories_id": 12,
+  "title": "Essential Pet Care Guide",
+  "content": "Ensure the health and happiness of your furry friend with this essential pet care guide. From nutrition tips to grooming advice, be the best pet parent you can be!"
+},
+{
+"user_id": 7,
+"categories_id": 10,
+"title": "Kitchen Essentials Every Home Cook Needs",
+"content": "Stock your kitchen with these essential tools and appliances for culinary success. From sharp knives to versatile cookware, elevate your cooking game today!"
+},
+{
+  "user_id": 11,
+  "categories_id": 8,
+  "title": "Book Recommendations for Every Reader",
+  "content": "Discover your next great read with these curated book recommendations. From gripping thrillers to heartwarming memoirs, there's something for every reader!"
+},
+{
+"user_id": 6,
+"categories_id": 13,
+"title": "Creative DIY Projects to Try",
+"content": "Unleash your creativity with these inspiring DIY projects. From home decor to handmade gifts, express yourself and make something beautiful today!"
+},
+{
+  "user_id": 5,
+  "categories_id": 5,
+  "title": "Tips for Stylish Home Decorating",
+  "content": "Transform your living space with these expert tips for stylish home decorating. From choosing the right color palette to arranging furniture, create a home you love!"
+}
