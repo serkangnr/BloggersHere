@@ -32,6 +32,7 @@ public class PostService extends ServiceManager<Post,Long> {
 //        postRepository.save(PostMapper.INSTANCE.postSaveRequestDtoToPost(postSaveRequestDto));
 //    }
 
+    // PostDto yu liste olarak dondurur.
     public List<PostFindAllResponseDto> findPostDto() {
         List<PostFindAllResponseDto> postFindAllResponseDtos = new ArrayList<>();
         findAll().forEach(post -> {
@@ -40,12 +41,13 @@ public class PostService extends ServiceManager<Post,Long> {
         return postFindAllResponseDtos;
     }
 
+    // Liste olarak verilen idleri dondurur . Kullanilmadi
     public List<Post> findAllById(List<Long> ids){
         return ids.stream()
                 .map(id -> findById(id).orElseThrow(()-> new BloggerHereException(ErrorType.POST_NOT_FOUND) ))
                 .collect(Collectors.toList());
     }
-
+    // PostSaveDto yu alir user ve categorileri olusturup postu save eder.
     public String savePost(PostSaveRequestDto postSaveRequestDto){
         User user = User.builder()
                 .id(postSaveRequestDto.user_id())
@@ -86,6 +88,7 @@ public class PostService extends ServiceManager<Post,Long> {
         return postFindAllResponseDtos;
     }
 
+    // postu categories id ile bulma
     public List<PostFindAllResponseDto> findAllPostByCategoriesId(Long categoriesId) {
         AtomicBoolean equals = new AtomicBoolean(false);
         List<PostFindAllResponseDto> postFindAllResponseDtos = postRepository.findAllPostByCategoriesId(categoriesId).stream().map(PostMapper.INSTANCE::postToPostFindAllResponseDto).collect(Collectors.toList());
@@ -98,6 +101,7 @@ public class PostService extends ServiceManager<Post,Long> {
         return postFindAllResponseDtos;
     }
 
+    // postun id'si ile postu bulur. Yeni bir title ve content alip commenti degistirir.
     public String updatePost(Long id, String title, String content){
         Optional<Post> byId = postRepository.findById(id);
         if (byId.isEmpty()){
@@ -111,6 +115,7 @@ public class PostService extends ServiceManager<Post,Long> {
         return "Guncelleme Basarili";
     }
 
+    // postun id'si ile postu bulur. Postu siler.'
     public String deletePost(Long id){
         Optional<Post> byId = postRepository.findById(id);
         if (byId.isEmpty()){
@@ -121,6 +126,7 @@ public class PostService extends ServiceManager<Post,Long> {
         return "Silme Basarili";
     }
 
+    //Contentleri tarar varsa post listesi dondurur. Bulamazsa bulunamadi hatasi dondurur.
     public List<PostFindAllResponseDto> findAllByContentContainingIgnoreCase(String content){
         AtomicBoolean equals = new AtomicBoolean(false);
         List<PostFindAllResponseDto> postFindAllResponseDtos = postRepository
@@ -137,6 +143,7 @@ public class PostService extends ServiceManager<Post,Long> {
         return postFindAllResponseDtos;
     }
 
+    // Postta kayitli category'nin name mevcutsa post listesi doner. Bulamazsa category bulunamadi hatasi doner.
     public List<PostFindAllResponseDto> findAllPostByCategoriesNameContainingIgnoreCase(String name) {
         List<PostFindAllResponseDto> postFindAllResponseDtos = new ArrayList<>();
         AtomicBoolean ok = new AtomicBoolean(false);
@@ -151,7 +158,7 @@ public class PostService extends ServiceManager<Post,Long> {
 
         return postFindAllResponseDtos;
     }
-
+    //Postlarini Yayinlanma tarihine gore siralar.
     public List<PostFindAllResponseDto> findAllPostOrderByPublished(){
         List<PostFindAllResponseDto> postFindAllResponseDtos = new ArrayList<>();
 
@@ -160,19 +167,4 @@ public class PostService extends ServiceManager<Post,Long> {
         });
         return postFindAllResponseDtos;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

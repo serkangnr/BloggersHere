@@ -31,10 +31,12 @@ public class UserService extends ServiceManager<User, Long> {
     }
 
 
+    // Userlari Mapper kullanarak save eder.
     public void userSaveDto(UserSaveRequestDto userSaveRequestDto) {
         userRepository.save(UserMapper.INSTANCE.userSaveRequestDtoToUser(userSaveRequestDto));
     }
 
+    // Userlari liste olarak doner.
     public List<UserFindAllResponseDto> findUserDto() {
         List<UserFindAllResponseDto> userFindAllResponseDtos = new ArrayList<>();
 
@@ -43,7 +45,7 @@ public class UserService extends ServiceManager<User, Long> {
         });
         return userFindAllResponseDtos;
     }
-    // Belirli bir kullanicinin detaylarini id ile getiren metod
+    // Belirli bir kullanicinin detaylarini id ile getirir
 
     public UserFindAllResponseDto findUserDtoID(Long id) {
         Optional<User> byId = userRepository.findById(id);
@@ -58,7 +60,7 @@ public class UserService extends ServiceManager<User, Long> {
         return null;
     }
 
-    // Belirli bir kullanicinin detaylarini ad soyad ile getiren metod
+    // Belirli bir kullanicinin detaylarini ad soyad ile getirir
     public UserFindAllResponseDto findUserDto(String name, String lastname) {
 
         User findByNameAndByLastname = userRepository.findByNameIgnoreCaseAndLastnameIgnoreCase(name, lastname);
@@ -66,6 +68,7 @@ public class UserService extends ServiceManager<User, Long> {
         return userFindAllResponseDto;
     }
 
+    // Id si verilen kullanicinin id'si bulundugu takdirde yeni bilgileri ile update eder.
     public String updateUser(Long id, String name, String lastName, String email, String password) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isEmpty()) {
@@ -80,6 +83,7 @@ public class UserService extends ServiceManager<User, Long> {
         return "Kayit Basarili";
     }
 
+    // Id si verilen kullanicinin id'si bulundugu takdirde silme islemi yapar.'
     public String deleteUser(Long id) {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isEmpty()) {
@@ -90,6 +94,7 @@ public class UserService extends ServiceManager<User, Long> {
         return "Silme islemi Basarili";
     }
 
+    // User Id ve Post Id si bulundugu takdirde user bir postu begenir.
     public void userLikePost(Long userId, Long postId) {
         Optional<User> user1 = userRepository.findById(userId);
         Optional<Post> post1 = postRepository.findById(postId);
@@ -113,8 +118,8 @@ public class UserService extends ServiceManager<User, Long> {
             throw new BloggerHereException(ErrorType.USER_OR_POST_NOT_FOUND, "User or Post not found");
         }
 
-
     }
+    // User Id ve Post Id si bulundugu takdirde user bir postu begenisini geri cekebilir.
     public String userLikePostDelete(Long userId, Long postId) {
 
         Optional<User> userOptional = userRepository.findById(userId);

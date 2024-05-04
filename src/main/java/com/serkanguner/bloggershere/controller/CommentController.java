@@ -15,9 +15,11 @@ import static com.serkanguner.bloggershere.constant.EndPoints.*;
 @RestController
 @RequestMapping(ROOT + COMMENT)
 @RequiredArgsConstructor
+// User ve postlara commentler eklendi.
 public class CommentController {
     private final CommentService commentService;
 
+    //Comment kaydeder.(Not Mapper)
     @PostMapping(SAVE)
     @CrossOrigin("*")
     public ResponseEntity<String> save(@RequestBody CommentSaveRequestDto dto) {
@@ -25,6 +27,7 @@ public class CommentController {
         return ResponseEntity.ok("Kayit Basarili");
     }
 
+    //Comment kaydeder.(Mapper) // Id'ler'i cekemiyor.
     @PostMapping("/SaveOtherWay")
     @CrossOrigin("*")
     public ResponseEntity<String> saveOtherWay(@RequestBody CommentSaveRequestDto dto) {
@@ -32,6 +35,7 @@ public class CommentController {
         return ResponseEntity.ok("Kayit Basarili");
     }
 
+    // Comment listesini doner
     @GetMapping(FINDALL)
     @CrossOrigin("*")
     public ResponseEntity<List<CommentFindAllResponseDto>> findAllDto(){

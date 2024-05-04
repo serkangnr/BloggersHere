@@ -21,12 +21,4 @@ public interface PostMapper {
     PostFindAllResponseDto postToPostFindAllResponseDto(Post post);
     Post postSaveRequestDtoToPost(PostSaveRequestDto postSaveRequestDto);
 
-
-
-
-
-
-
-
-
 }

@@ -28,14 +28,14 @@ public class Post {
     LocalDate published_at;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    User user; //Birden fazla postun bir user'i olabilir.
     @ManyToOne
     @JoinColumn(name = "categories_id")
-    Categories categories;
+    Categories categories; // Birden fazla post bir kategoriye ait olabilir.
 
     @OneToMany(mappedBy ="post")
-    private List<Comment> comments;
+    private List<Comment> comments; // bir postun birden cok commenti olabilir
 
     @ManyToMany(mappedBy = "likes")
-    private List<User> users;
+    private List<User> users; // bir postun birden cok begenisi olabilir ve bir user birden cok postu begenebilir
 }

@@ -21,7 +21,7 @@ public class Comment {
     @Column(length = 2048)
     private String content;
     @Builder.Default
-    private LocalDateTime date=LocalDateTime.now();
+    private LocalDateTime date=LocalDateTime.now(); // Comment'in atilma zamaninini yakalar.
 
     @ManyToOne
     private Post post;

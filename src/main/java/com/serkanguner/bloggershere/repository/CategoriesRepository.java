@@ -9,8 +9,10 @@ import java.util.Optional;
 @Repository
 public interface CategoriesRepository extends JpaRepository<Categories, Long> {
 
+    // Categories id ile arama
     Optional<Categories> findById(Long id);
 
 
+    // Categories name ile arama
     List<Categories> findAllByNameContainingIgnoreCase(String name);
 }

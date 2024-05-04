@@ -16,6 +16,9 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 @Component
+/*
+KULLANILMADI
+ */
 public class DataImpl implements ApplicationRunner {
     private final UserService userService;
 
@@ -54,25 +57,19 @@ public class DataImpl implements ApplicationRunner {
 
     public class JSONReader {
         public static void main(String[] args) {
-            // JSON dosyasının yolunu belirtin
+            // JSON dosyasının yolunu belirtir
             String dosyaYolu = "path/to/your/file.json";
 
             try {
-                // Gson nesnesini oluşturun
+                // Gson nesnesini oluştur
                 Gson gson = new Gson();
 
-                // JsonParser nesnesini oluşturun
+                // JsonParser nesnesini oluştur
                 JsonParser parser = new JsonParser();
 
-                // FileReader kullanarak JSON dosyasını okuyun
+                // FileReader kullanarak JSON dosyasını oku
                 JsonElement jsonElement = parser.parse(new FileReader(dosyaYolu));
 
-                // JSON verisini istediğiniz sınıfa dönüştürün (varsayılan olarak JsonObject kullanabilirsiniz)
-                // Örneğin, eğer JSON dosyasının içeriği bir User sınıfına uygunsa:
-                // User user = gson.fromJson(jsonElement, User.class);
-
-                // JSON verisini işlemek için gerekli işlemleri yapın
-                // Örneğin, JSON verisini yazdırın
                 System.out.println(jsonElement);
             } catch (IOException e) {
                 e.printStackTrace();

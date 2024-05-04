@@ -9,11 +9,16 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
+    // ID ile post arama
     Optional<Post> findById(Long id);
 
+    //User id ile post ara
     List<Post> findAllPostByUserId(Long userId);
+
+    //Categories id ile post arama
     List<Post> findAllPostByCategoriesId(Long categoriesId);
 
+    //Yazıları içeriğine göre arama
     List<Post> findAllByContentContainingIgnoreCase(String content);
 
 

@@ -25,10 +25,12 @@ public class CategoriesService extends ServiceManager<Categories,Long> {
         this.categoriesRepository = categoriesRepository;
     }
 
+    // Categoryleri Mapper kullanarak save eder
     public void categoriesSaveDto(CategorySaveRequestDto categorySaveRequestDto) {
         categoriesRepository.save(CategoriesMapper.INSTANCE.categoriesSaveRequestDtoToCategories(categorySaveRequestDto));
     }
 
+    // Categoryleri Mapper kullanarak listeler
     public List<CategoryFindAllResponseDto> findAllCategoriesDto() {
         List<CategoryFindAllResponseDto> categoryFindAllResponseDtos = new ArrayList<>();
 
@@ -38,6 +40,12 @@ public class CategoriesService extends ServiceManager<Categories,Long> {
         return categoryFindAllResponseDtos;
     }
 
+    /**
+     * Returns
+     * @param id : Category id
+     * @return CategoryFindAllResponseDto
+     * @throws BloggerHereException if category id is not found
+     */
     public CategoryFindAllResponseDto findCategoryById(Long id){
         Optional<Categories> byId = categoriesRepository.findById(id);
         if(byId.isEmpty()){
@@ -47,6 +55,14 @@ public class CategoriesService extends ServiceManager<Categories,Long> {
 
     }
 
+    /**
+     * updateCategoryById take id and findById given Id and add new( name, description)
+     * Returns
+     * @param id : Category id
+     * @param name : new category name
+     * @param description : new category description
+     * @return
+     */
     public String updateCategoryById(Long id, String name,String description){
         Optional<Categories> byId = categoriesRepository.findById(id);
         if(byId.isEmpty()){
@@ -58,6 +74,7 @@ public class CategoriesService extends ServiceManager<Categories,Long> {
         categoriesRepository.save(categories);
         return "Guncelleme Basarili";
     }
+    // Category id ye gore catogoriyi silme islemi
     public String deleteCategoryById(Long id){
         Optional<Categories> byId = categoriesRepository.findById(id);
         if (byId.isEmpty()){
@@ -67,6 +84,7 @@ public class CategoriesService extends ServiceManager<Categories,Long> {
         return "Silme Basarili";
     }
 
+    //Categories name aranan ifadeyi iceriyorsa categeroy bilgisini doner. Bulamazsa kategori bulunamadi hatasi firlatir.
     public List<CategoryFindAllResponseDto>  findAllByNameContaining(String name){
         AtomicReference<Boolean> ok = new AtomicReference<>(false);
         List<Categories> allByNameContainingIgnoreCase = categoriesRepository.findAllByNameContainingIgnoreCase(name);

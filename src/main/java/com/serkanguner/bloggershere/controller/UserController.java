@@ -20,6 +20,7 @@ public class UserController {
     private final UserService userService;
 
 
+    // User save eder kaydederken mail ve password kontrolu yapar.
     @PostMapping(SAVE)
     @CrossOrigin("*")
     public ResponseEntity<String> save(@RequestBody UserSaveRequestDto dto) {
@@ -33,6 +34,7 @@ public class UserController {
         }
     }
 
+    // User listesi doner
     @GetMapping(FINDALL)
     @CrossOrigin("*")
     public ResponseEntity<List<UserFindAllResponseDto>> findAllDto() {
@@ -44,6 +46,7 @@ public class UserController {
 
     }
 
+    //Belirlenen Id ye gore user listesi doner
     @GetMapping(FINDBYID)
     @CrossOrigin("*")
     public ResponseEntity<UserFindAllResponseDto> findByIdDto(@RequestParam("id") Long id) {
@@ -52,6 +55,7 @@ public class UserController {
         return dtoResponseEntity;
     }
 
+    // Verilen name and lastname gore user listesi doner
     @GetMapping(FINDBYNAMEANDLASTNAME)
     @CrossOrigin("*")
     public ResponseEntity<UserFindAllResponseDto> findUserByNameAndLastName(@RequestParam(name = "name") String name, @RequestParam("lastname") String lastname) {
@@ -62,6 +66,7 @@ public class UserController {
         return dtoResponseEntity;
     }
 
+    // Id'ye gore user update edilir.
     @PutMapping(UPDATE)
     @CrossOrigin("*")
     public ResponseEntity<String> updateUser(Long id, String name, String lastName, String email, String password) {
@@ -70,6 +75,7 @@ public class UserController {
         return responseEntity;
     }
 
+    // Id'ye gore user silinir.'
     @DeleteMapping(DELETE)
     @CrossOrigin("*")
     public ResponseEntity<String> deleteUser(@RequestParam(name = "id") Long id) {
@@ -80,6 +86,7 @@ public class UserController {
         return responseEntity;
     }
 
+    // User ve Post Id'ye gore post like edilir. // Ayni user ve ayni post like etmeye calistiginda like eklemez ancak silmezde
     @PostMapping("/saveLike")
     @CrossOrigin("*")
     public ResponseEntity<String> userLikePost(@RequestParam(name = "user_id") Long userId, @RequestParam(name = "post_id") Long postId) {
@@ -87,6 +94,7 @@ public class UserController {
         return ResponseEntity.ok("Post liked");
     }
 
+    // User ve Post Id'ye gore post like silinir.'
     @DeleteMapping("/saveLikeDelete")
     @CrossOrigin("*")
     public ResponseEntity<String> userLikePostDelete(@RequestParam(name = "user_id") Long userId, @RequestParam(name = "post_id") Long postId) {
@@ -95,6 +103,5 @@ public class UserController {
 
         return ResponseEntity.ok("Like deleted");
     }
-
 
 }

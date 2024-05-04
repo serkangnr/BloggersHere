@@ -1,8 +1,5 @@
 package com.serkanguner.bloggershere.dto.request;
 
-import com.serkanguner.bloggershere.dto.response.UserPostFindAllResponseDto;
-
-import java.util.List;
-
+// Category icin name ve description olmasi yeterli
 public record CategorySaveRequestDto(String name, String description) {
 }

@@ -27,11 +27,12 @@ public class CommentService extends ServiceManager<Comment,Long> {
         this.postService = postService;
     }
 
+    // Comment Dto ile kaydi, Mapper kullanarak id eklemesi (EKLEYEMEDI).
     public void commentSaveDtoMapper(CommentSaveRequestDto dto){
         commentRepository.save(CommentMapper.INSTANCE.commentSaveRequestDtoToComment(dto));
 
     }
-
+    // Comment Dto ile kaydi, Mapper kullanmadan id eklemesi (EKLEDI).
     public String commentSaveDto(CommentSaveRequestDto dto) {
         User user = User.builder()
                 .id(dto.userid())
@@ -50,7 +51,7 @@ public class CommentService extends ServiceManager<Comment,Long> {
         commentRepository.save(comment);
         return "Kayit Basarili";
     }
-
+    //Commentleri listeler
     public List<CommentFindAllResponseDto> findCommentDto() {
         List<CommentFindAllResponseDto> commentFindAllResponseDtos = new ArrayList<>();
 
@@ -59,6 +60,5 @@ public class CommentService extends ServiceManager<Comment,Long> {
         });
         return commentFindAllResponseDtos;
     }
-
 
 }

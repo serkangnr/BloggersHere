@@ -23,7 +23,7 @@ public class DataLoad implements ApplicationRunner {
     private final PostService postService;
 
 
-
+// Database ekle
 
     public void loadUser() {
         try {
@@ -103,7 +103,7 @@ public class DataLoad implements ApplicationRunner {
 
             // Verileri işle
             for (PostSaveRequestDto post : posts) {
-                Long userId = post.user_id();
+                Long userId = post.user_id(); // Gelen verilerde user_id oldugu icin post classini kullanilamaz bu yuzden dto ile cekildi.
                 Long categoriesId = post.categories_id();
                 String title = post.title();
                 String content = post.content();
